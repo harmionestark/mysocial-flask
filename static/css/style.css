@@ -1,0 +1,183 @@
+/* Reset & basic styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e8c2fc; /* very light purple */
+    color: #333;
+}
+
+/* Navbar */
+nav {
+    background-color: #9e56c4; /* soft purple */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #f0e5ff;
+}
+/* Flash messages */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li.success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+li.danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+li.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+li.warning {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+/* Main content */
+main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+/* Profile header */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.profile-header img {
+    border-radius: 50%;
+    border: 3px solid #bda0f1;
+}
+a{
+    background-color: #9e56c4;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-decoration: none;
+}
+a:hover{
+    background-color: #9b7de0;
+}
+
+#postindex {
+    color: #121417;
+    text-decoration: none;
+    background: none;   /* ensure no button background */
+    padding: 0;         /* remove padding */
+}
+
+#postindex:hover {
+    text-decoration: underline;
+}
+/* Buttons */
+button, a.button {
+    background-color: #9e56c4;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-decoration: none;
+}
+
+button:hover, a.button:hover {
+    background-color: #9b7de0;
+}
+
+/* Post styling */
+div.post {
+    border: 1px solid #ddd;
+    background-color: rgba(255,255,255,0.5);
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+div.post img {
+    max-width: 100%;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+/* Forms */
+form textarea, form input[type="text"], form input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    margin-top: 5px;
+    background-color: #9e56c4;
+}
+
+/* Footer (optional) */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #bda0f1;
+    color: #fff;
+    margin-top: 50px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center; /* centers posts if extra space */
+}
+
+.posts-grid .post {
+  width: 250px; /* fixed width for each post */
+  border: 1px solid #ddd;
+  background-color: rgba(255,255,255,0.5);
+  padding: 15px;
+  margin: 0; /* gap handled by grid */
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}

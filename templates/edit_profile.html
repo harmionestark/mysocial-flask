@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Edit Profile</h2>
+
+<form method="post" enctype="multipart/form-data">
+  <label>Username:</label>
+  <input type="text" name="username" value="{{ user_data[0] }}"><br><br>
+
+  <label>Bio:</label><br>
+  <textarea name="bio" rows="4" cols="40">{{ user_data[1] or '' }}</textarea><br><br>
+
+  <label>Profile Picture:</label>
+  <input type="file" name="profile_pic"><br><br>
+
+  {% if user_data[2] %}
+    <p>Current Picture:</p>
+    <img src="{{ url_for('static', filename='uploads/' + user_data[2]) }}" width="120">
+  {% endif %}
+
+  <button type="submit">Save Changes</button>
+</form>
+{% endblock %}

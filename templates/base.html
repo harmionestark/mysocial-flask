@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}MySocial{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    /* Extra styles for dropdown */
+    nav {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      background: #6a0dad; /* purple */
+    }
+
+    nav a {
+      color: white;
+      margin-right: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #ddd;
+    }
+
+    .settings {
+  margin-left: auto;
+  position: relative;
+}
+
+.settings > a {
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  min-width: 180px;   /* wider so text fits */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  z-index: 1000;
+  padding: 5px 0;
+}
+
+.dropdown a {
+  display: block;
+  padding: 10px 15px;
+  color: #333 !important;
+  text-decoration: none;
+  font-weight: normal;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.dropdown a:hover {
+  background-color: #f0e5ff;
+  color: #000 !important;
+  border-radius: 0;
+}
+
+.settings.open .dropdown {
+  display: block;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="{{ url_for('index') }}">Home</a>
+
+    {% if current_user.is_authenticated %}
+      <a href="{{ url_for('profile', username=current_user.username) }}">My Profile</a>
+
+      <div class="settings" id="settingsMenu">
+        <a onclick="toggleSettings()">⚙️ Settings</a>
+        <div class="dropdown">
+          <a href="{{ url_for('change_password') }}">Change Password</a>
+          <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+      </div>
+    {% else %}
+      <div style="margin-left:auto;">
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('register') }}">Register</a>
+      </div>
+    {% endif %}
+  </nav>
+
+  <!-- Flash messages -->
+  <main>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p>© 2025 MySocial</p>
+  </footer>
+
+  <script>
+    function toggleSettings() {
+      document.getElementById("settingsMenu").classList.toggle("open");
+    }
+    // close dropdown when clicking outside
+    window.addEventListener("click", function(e) {
+      const settings = document.getElementById("settingsMenu");
+      if (settings && !settings.contains(e.target)) {
+        settings.classList.remove("open");
+      }
+    });
+  </script>
+</body>
+</html>

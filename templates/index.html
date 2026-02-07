@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Feed</h2>
+
+{% if current_user.is_authenticated %}
+  <p>Welcome, {{ current_user.username }} 👋</p>
+{% else %}
+  <p>Please <a href="{{ url_for('login') }}">login</a> to create posts.</p>
+{% endif %}
+
+<hr>
+
+<div class="posts-grid">
+  {% for post in posts %}
+    <div class="post">
+      <p>
+        <strong><a id="postindex" href="{{ url_for('profile', username=post[4]) }}">{{ post[4] }}</a></strong>
+        <em>{{ post[3] }}</em>
+      </p>
+      <p>{{ post[1] }}</p>
+      {% if post[2] %}
+        <img src="{{ url_for('static', filename='uploads/' + post[2]) }}" alt="Post Image">
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
