@@ -1,6 +1,7 @@
 MySocial is a small social media web application built using **Flask**, **SQLite**, and **HTML/CSS**. It allows users to register, log in, create posts with optional images, follow other users, and manage their profiles. The project demonstrates full-stack web development concepts including authentication, database management, CRUD operations, and front-end design.
 
 ---
+Video Demo: https://youtu.be/RA5lglIiHWA?si=anx5kixvB58HMrQ2
 
 #Features
 
